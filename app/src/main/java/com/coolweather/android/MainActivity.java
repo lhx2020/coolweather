@@ -1,6 +1,7 @@
 package com.coolweather.android;
 
 import android.content.Intent;
+import android.graphics.ColorSpace;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.coolweather.android.service.MyService;
+
+import org.litepal.tablemanager.Connector;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +27,7 @@ import javax.net.ssl.HttpsURLConnection;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
   TextView responseText;
@@ -35,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       Button stopService=this.findViewById(R.id.stop_service);
       startService.setOnClickListener(this);
       stopService.setOnClickListener(this);
+      //测试数据库
+     //   Connector.getDatabase();
+        SQLiteStudioService.instance().start(this);
     }
 
     @Override
@@ -125,5 +132,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        SQLiteStudioService.instance().stop();
+        super.onDestroy();
     }
 }
