@@ -29,22 +29,22 @@ import okhttp3.Request;
 import okhttp3.Response;
 import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity{
   TextView responseText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      Button startService=this.findViewById(R.id.start_service);
+    /*  Button startService=this.findViewById(R.id.start_service);
       Button stopService=this.findViewById(R.id.stop_service);
       startService.setOnClickListener(this);
       stopService.setOnClickListener(this);
       //测试数据库
      //   Connector.getDatabase();
-        SQLiteStudioService.instance().start(this);
+        SQLiteStudioService.instance().start(this);*/
     }
 
-    @Override
+   /* @Override
     public void onClick(View v) {
 
         switch (v.getId()){
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //sendRequestWithHttpURLConnection();
       //  sendRequestWithOkHttp();
 
-    }
+    }*/
 
     private void sendRequestWithOkHttp(){
        new Thread(new Runnable() {
